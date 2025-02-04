@@ -1,1 +1,0 @@
-/home/karna/.config/emacs/config.org
