@@ -96,15 +96,15 @@
   :ensure t
   :init (dired-async-mode 1))
 
-;; (setq backup-directory-alist '((".*" . "~/.local/share/Trash/files")))
-(setq backup-directory-alist
-      `(("." . ,(dir-concat user-cache-directory "backup")))
-      backup-by-copying t ; Use copies
-      version-control t ; Use version numbers on backups
-      delete-old-versions t ; Automatically delete excess backups
-      kept-new-versions 5 ; Newest versions to keep
-      kept-old-versions 3 ; Old versions to keep
-      )
+(setq backup-directory-alist '((".*" . "~/.local/share/Trash/files")))
+;;(setq backup-directory-alist
+;;      `(("." . ,(dir-concat user-cache-directory "backup")))
+;;      backup-by-copying t ; Use copies
+;;      version-control t ; Use version numbers on backups
+;;      delete-old-versions t ; Automatically delete excess backups
+;;      kept-new-versions 5 ; Newest versions to keep
+;;      kept-old-versions 3 ; Old versions to keep
+;;      )
 
 (use-package beacon
   :ensure t
