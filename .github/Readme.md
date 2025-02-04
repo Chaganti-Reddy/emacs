@@ -1,0 +1,1 @@
+/home/karna/.config/emacs/1.md
