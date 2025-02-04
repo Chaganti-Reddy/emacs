@@ -216,15 +216,15 @@ Let us use asynchronous processes whereever possible, pretty useful.
 By default, Emacs creates automatic backups of files in their original directories, such "file.el" and the backup "file.el~".  This leads to a lot of clutter, so let's tell Emacs to put all backups that it creates in the =TRASH= directory.
 
 #+begin_src emacs-lisp
-;; (setq backup-directory-alist '((".*" . "~/.local/share/Trash/files")))
-(setq backup-directory-alist
-      `(("." . ,(dir-concat user-cache-directory "backup")))
-      backup-by-copying t ; Use copies
-      version-control t ; Use version numbers on backups
-      delete-old-versions t ; Automatically delete excess backups
-      kept-new-versions 5 ; Newest versions to keep
-      kept-old-versions 3 ; Old versions to keep
-      )
+(setq backup-directory-alist '((".*" . "~/.local/share/Trash/files")))
+;;(setq backup-directory-alist
+;;      `(("." . ,(dir-concat user-cache-directory "backup")))
+;;      backup-by-copying t ; Use copies
+;;      version-control t ; Use version numbers on backups
+;;      delete-old-versions t ; Automatically delete excess backups
+;;      kept-new-versions 5 ; Newest versions to keep
+;;      kept-old-versions 3 ; Old versions to keep
+;;      )
 #+end_src
 
 * BEACON
