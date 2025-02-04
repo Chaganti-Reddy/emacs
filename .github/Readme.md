@@ -1,1 +1,1 @@
-/home/karna/.config/emacs/1.md
+../config.org
