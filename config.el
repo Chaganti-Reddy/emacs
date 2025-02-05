@@ -515,39 +515,6 @@ Other buffer group by `centaur-tabs-get-group-name' with project name."
   :diminish
   :init (global-flycheck-mode))
 
-(set-face-attribute 'default nil
-  :font "JetbrainsMono Nerd Font"
-  :height 110
-  :weight 'medium)
-(set-face-attribute 'variable-pitch nil
-  :font "JetbrainsMono Nerd Font"
-  :height 120
-  :weight 'medium)
-(set-face-attribute 'fixed-pitch nil
-  :font "JetBrainsMono Nerd Font"
-  :height 110
-  :weight 'medium)
-;; Makes commented text and keywords italics.
-;; This is working in emacsclient but not emacs.
-;; Your font must have an italic face available.
-(set-face-attribute 'font-lock-comment-face nil
-  :slant 'italic)
-(set-face-attribute 'font-lock-keyword-face nil
-  :slant 'italic)
-
-;; This sets the default font on all graphical frames created after restarting Emacs.
-;; Does the same thing as 'set-face-attribute default' above, but emacsclient fonts
-;; are not right unless I also add this method of setting the default font.
-(add-to-list 'default-frame-alist '(font . "JetbrainsMono Nerd Font-12"))
-
-;; Uncomment the following line if line spacing needs adjusting.
-(setq-default line-spacing 0.12)
-
-(global-set-key (kbd "C-=") 'text-scale-increase)
-(global-set-key (kbd "C--") 'text-scale-decrease)
-(global-set-key (kbd "<C-wheel-up>") 'text-scale-increase)
-(global-set-key (kbd "<C-wheel-down>") 'text-scale-decrease)
-
 (use-package format-all
   :preface
   (defun ian/format-code ()
@@ -838,6 +805,11 @@ Other buffer group by `centaur-tabs-get-group-name' with project name."
     "w u" '(upcase-word :wk "Upcase word")
     "w =" '(count-words :wk "Count words/lines for buffer"))
 )
+
+(global-set-key (kbd "C-=") 'text-scale-increase)
+(global-set-key (kbd "C--") 'text-scale-decrease)
+(global-set-key (kbd "<C-wheel-up>") 'text-scale-increase)
+(global-set-key (kbd "<C-wheel-down>") 'text-scale-decrease)
 
 (use-package git-timemachine
   :after git-timemachine
@@ -1292,14 +1264,14 @@ Other buffer group by `centaur-tabs-get-group-name' with project name."
 ;; Load our desired dt/org-colors-* theme on startup
 (dt/org-colors-doom-one)
 
-(custom-set-faces
- '(org-level-1 ((t (:inherit outline-1 :height 1.7))))
- '(org-level-2 ((t (:inherit outline-2 :height 1.6))))
- '(org-level-3 ((t (:inherit outline-3 :height 1.5))))
- '(org-level-4 ((t (:inherit outline-4 :height 1.4))))
- '(org-level-5 ((t (:inherit outline-5 :height 1.3))))
- '(org-level-6 ((t (:inherit outline-5 :height 1.2))))
- '(org-level-7 ((t (:inherit outline-5 :height 1.1)))))
+  (custom-set-faces
+   '(org-level-1 ((t (:inherit outline-1 :height 1.7))))
+   '(org-level-2 ((t (:inherit outline-2 :height 1.6))))
+   '(org-level-3 ((t (:inherit outline-3 :height 1.5))))
+   '(org-level-4 ((t (:inherit outline-4 :height 1.4))))
+   '(org-level-5 ((t (:inherit outline-5 :height 1.3))))
+   '(org-level-6 ((t (:inherit outline-5 :height 1.2))))
+   '(org-level-7 ((t (:inherit outline-5 :height 1.1)))))
 
 (use-package org-roam
   :ensure t
@@ -1605,64 +1577,122 @@ Other buffer group by `centaur-tabs-get-group-name' with project name."
 
 (use-package sudo-edit)
 
-(add-to-list 'custom-theme-load-path "~/.config/emacs/themes/")
+;; (add-to-list 'custom-theme-load-path "~/.config/emacs/themes/")
 
-(use-package doom-themes
-  :config
-  (setq doom-themes-enable-bold t    ; if nil, bold is universally disabled
-        doom-themes-enable-italic t) ; if nil, italics is universally disabled
-  ;; Sets the default theme to load!!! 
-  (load-theme 'doom-challenger-deep t)
-  ;; Enable custom neotree theme (all-the-icons must be installed!)
-  (doom-themes-neotree-config)
-  ;; Corrects (and improves) org-mode's native fontification.
-  (doom-themes-org-config))
+;; (use-package doom-themes
+;;   :config
+;;   (setq doom-themes-enable-bold t    ; if nil, bold is universally disabled
+;;         doom-themes-enable-italic t) ; if nil, italics is universally disabled
+;;   ;; Sets the default theme to load!!! 
+;;   (load-theme 'doom-challenger-deep t)
+;;   ;; Enable custom neotree theme (all-the-icons must be installed!)
+;;   (doom-themes-neotree-config)
+;;   ;; Corrects (and improves) org-mode's native fontification.
+;;   (doom-themes-org-config))
 
-(use-package battery
-  :ensure nil
-  :hook (after-init . display-battery-mode))
+;; (use-package battery
+;;   :ensure nil
+;;   :hook (after-init . display-battery-mode))
 
-(use-package leuven-theme
-  :ensure (:host github :repo "fniessen/emacs-leuven-theme")
-  :custom-face
-  (doom-modeline-buffer-file ((t (:inherit (doom-modeline font-lock-doc-face) :weight normal :slant normal))))
-  (doom-modeline-buffer-path ((t (:inherit (doom-modeline font-lock-doc-face) :weight normal :slant normal))))
-  (which-func ((t (:inherit (doom-modeline font-lock-doc-face) :weight normal :slant normal :foreground "gray29"))))
-  (doom-modeline-buffer-major-mode ((t (:inherit (doom-modeline font-lock-doc-face) :weight normal :slant normal)))))
+;; (use-package leuven-theme
+;;   :ensure (:host github :repo "fniessen/emacs-leuven-theme")
+;;   :custom-face
+;;   (doom-modeline-buffer-file ((t (:inherit (doom-modeline font-lock-doc-face) :weight normal :slant normal))))
+;;   (doom-modeline-buffer-path ((t (:inherit (doom-modeline font-lock-doc-face) :weight normal :slant normal))))
+;;   (which-func ((t (:inherit (doom-modeline font-lock-doc-face) :weight normal :slant normal :foreground "gray29"))))
+;;   (doom-modeline-buffer-major-mode ((t (:inherit (doom-modeline font-lock-doc-face) :weight normal :slant normal)))))
 
 
 
-(use-package tao-theme
-  :ensure t
-  :custom
-  (tao-theme-use-boxes t)
-  (tao-theme-use-height nil)
-  (tao-theme-use-sepia nil)
-  :init
-  (defvar after-load-theme-hook nil
-    "Hook run after a color theme is loaded using `load-theme'.")
+;; (use-package tao-theme
+;;   :ensure t
+;;   :custom
+;;   (tao-theme-use-boxes t)
+;;   (tao-theme-use-height nil)
+;;   (tao-theme-use-sepia nil)
+;;   :init
+;;   (defvar after-load-theme-hook nil
+;;     "Hook run after a color theme is loaded using `load-theme'.")
 
-  (defadvice load-theme (after run-after-load-theme-hook activate)
-    "Run `after-load-theme-hook'."
-    (run-hooks 'after-load-theme-hook))
+;;   (defadvice load-theme (after run-after-load-theme-hook activate)
+;;     "Run `after-load-theme-hook'."
+;;     (run-hooks 'after-load-theme-hook))
 
-  (defun update-doom-modeline-battery-faces ()
-  "Customize battery faces for tao-yin and tao-yang themes."
-  (cond
-   ((member 'tao-yin custom-enabled-themes)
-    ;; Customizations for tao-yin theme
-    (custom-set-faces
-     '(doom-modeline-battery-warning ((t (:foreground "black" :background "orange"))))
-     '(doom-modeline-battery-critical ((t (:foreground "black" :background "red"))))
-     ))
-   ((member 'tao-yang custom-enabled-themes)
-    ;; Customizations for tao-yang theme
-    (custom-set-faces
-     '(doom-modeline-battery-warning ((t (:foreground "black" :background "orange"))))
-     '(doom-modeline-battery-critical ((t (:foreground "black" :background "red"))))
-     ))))
+;;   (defun update-doom-modeline-battery-faces ()
+;;   "Customize battery faces for tao-yin and tao-yang themes."
+;;   (cond
+;;    ((member 'tao-yin custom-enabled-themes)
+;;     ;; Customizations for tao-yin theme
+;;     (custom-set-faces
+;;      '(doom-modeline-battery-warning ((t (:foreground "black" :background "orange"))))
+;;      '(doom-modeline-battery-critical ((t (:foreground "black" :background "red"))))
+;;      ))
+;;    ((member 'tao-yang custom-enabled-themes)
+;;     ;; Customizations for tao-yang theme
+;;     (custom-set-faces
+;;      '(doom-modeline-battery-warning ((t (:foreground "black" :background "orange"))))
+;;      '(doom-modeline-battery-critical ((t (:foreground "black" :background "red"))))
+;;      ))))
 
-  (add-hook 'after-load-theme-hook 'update-doom-modeline-battery-faces))
+;;   (add-hook 'after-load-theme-hook 'update-doom-modeline-battery-faces))
+
+(use-package ewal
+  :init (setq ewal-use-built-in-always-p nil
+              ewal-use-built-in-on-failure-p t
+              ;; ewal-built-in-palette "sexy-material")
+              ewal-built-in-palette "vscode")
+)
+(use-package ewal-doom-themes
+  :init (progn
+          (setq doom-theme-underline-parens t
+                my:rice:font (font-spec
+                              :family "JetbrainsMono Nerd Font"
+                              :weight 'semi-bold
+                              :size 12.0))
+          (show-paren-mode +1)
+          (global-hl-line-mode)
+          (set-frame-font my:rice:font nil t)
+          (add-to-list  'default-frame-alist
+                        `(font . ,(font-xlfd-name my:rice:font))))
+  :config (progn
+            (load-theme 'ewal-doom-one t)
+            (enable-theme 'ewal-doom-one)))
+(use-package ewal-evil-cursors
+  :after (ewal-doom-themes)
+  :config (ewal-evil-cursors-get-colors
+           :apply t :spaceline t))
+(use-package spaceline
+  :after (ewal-evil-cursors winum)
+  :init (setq powerline-default-separator nil)
+  :config (spaceline-doom-theme))
+
+(set-face-attribute 'default nil
+  :font "JetbrainsMono Nerd Font"
+  :height 110
+  :weight 'medium)
+(set-face-attribute 'variable-pitch nil
+  :font "JetbrainsMono Nerd Font"
+  :height 120
+  :weight 'medium)
+(set-face-attribute 'fixed-pitch nil
+  :font "JetBrainsMono Nerd Font"
+  :height 110
+  :weight 'medium)
+;; Makes commented text and keywords italics.
+;; This is working in emacsclient but not emacs.
+;; Your font must have an italic face available.
+(set-face-attribute 'font-lock-comment-face nil
+  :slant 'italic)
+(set-face-attribute 'font-lock-keyword-face nil
+  :slant 'italic)
+
+;; This sets the default font on all graphical frames created after restarting Emacs.
+;; Does the same thing as 'set-face-attribute default' above, but emacsclient fonts
+;; are not right unless I also add this method of setting the default font.
+;; (add-to-list 'default-frame-alist '(font . "JetbrainsMono Nerd Font-12"))
+
+;; Uncomment the following line if line spacing needs adjusting.
+(setq-default line-spacing 0.12)
 
 (use-package tldr)
 
